@@ -39,6 +39,34 @@ return은 실제로 출력되지 않는다. )
 
 
 
+##### 아스키 코드 관련 메소드
+
+- ord() : char를 아스키코드로
+- chr() : 아스키코드를 char로
+
+
+
+##### map () 사용하기
+
+iterable한 객체의 요소 하나하나에 function을 적용한다.
+
+function에는 builtin 함수 뿐만 아니라 사용자 정의 함수, 람다식도 가능하다.
+
+```python
+list(map(function, iterable))
+
+# 예시
+list(map(str, [1, 2, 3, 4, 5]))
+```
+
+
+
+![image-20210121162411956](03_function_1.assets/image-20210121162411956.png)
+
+![image-20210121162531960](03_function_1.assets/image-20210121162531960.png)
+
+
+
 ## 2.함수의 output
 
 
