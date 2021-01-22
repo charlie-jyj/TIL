@@ -471,6 +471,16 @@ False, None, True, and, as, assert, async, await, break, class, continue, def, d
       ​		print(k,v)
 
     - tuple이 튀어나온다. (k, v)에서 소괄호가 생략된 것
+    
+  - get()
+  
+    - 해당 key가 존재하지 않을 때 None을 value로 return
+    - dict[index] 는 해당 key 존재하지 않으면 error
+    
+  - update()
+  
+    - dict에 값을 추가할 수 있다.
+    - argument로 dict나 tuple같이 key와 value로 이루어진 객체를 사용한다.
 
 
 
