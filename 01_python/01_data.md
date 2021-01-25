@@ -137,13 +137,15 @@ type(a)
 
 ##### str 메소드
 
-| 메소드 이름 | 기능                          | 비고                      |
-| ----------- | ----------------------------- | ------------------------- |
-| upper()     | to uppercase                  |                           |
-| lower()     | to lowercase                  |                           |
-| join()      | str을 구분자로 삼아 합쳐준다, | *string*.join(*iterable*) |
+| 메소드 이름     | 기능                                 | 비고                         |
+| --------------- | ------------------------------------ | ---------------------------- |
+| upper()         | to uppercase                         |                              |
+| lower()         | to lowercase                         |                              |
+| join()          | str을 구분자로 삼아 합쳐준다,        | *stri.join(*iterable*)       |
+| startswith(str) | str로 시작하는지 판단 boolean 반환   | *str.startswith(*str*)       |
+| replace()       | 특정 문자열을 교체한다(max는 option) | *str*.replace(old, new, max) |
 
-
+![image-20210124193044474](01_data.assets/image-20210124193044474.png)
 
 ### 5.참/거짓 (Boolean) 타입
 
@@ -408,6 +410,15 @@ False, None, True, and, as, assert, async, await, break, class, continue, def, d
 - list[i]
 - 선언시 trailing comma (마지막 요소에게 ',')
 
+| 함수 이름          | 기능                        | 비고 |
+| ------------------ | --------------------------- | ---- |
+| list.append(value) | value를 list에 추가         |      |
+| list.remove(value) | value를 list에서 제거       |      |
+| list.count(value)  | list의 특정 value 개수 반환 |      |
+| list.reverse()     | list 순서 역정렬            |      |
+
+
+
 ### 2. tuple
 
 > python 내부적으로 간접적 활용
@@ -442,17 +453,30 @@ False, None, True, and, as, assert, async, await, break, class, continue, def, d
 
 
 
-> 비시퀀스형 컨테이너, 순서를 보장하지 않는다.
+> 비시퀀스형 컨테이너, 순서를 보장하지 않는다. collection
 
 ### 1. set
 
 - {val1, val2, val3}
+
 - 순서 보장되지 않음
+
 - 집합의 연산 가능하다
   - set_a - set_b
   - set_a | set_b
   - set_a & set_b
+  
 - 중복을 제거한다
+
+  - list에 중복된 value가 있을 경우 
+
+    ```python
+    sample = [1, 1, 2, 2, 3, 4]
+    
+    no_duplicate = list(set(sample))
+    ```
+
+    
 
 
 

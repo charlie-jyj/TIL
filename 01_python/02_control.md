@@ -64,7 +64,8 @@ else:
     - enumerate(iterable, start=0)
     - iterable은 시퀀스, 이터레이터를 지원하는 다른 객체
     - (index, value)의 tuple을 반환한다.
-
+  - index를 다루고 싶을 때 사용하자
+  
   ```python
   sweets = ['choco', 'candy', 'caramel', 'jelly']
   #1
