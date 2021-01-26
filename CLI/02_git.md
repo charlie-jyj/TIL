@@ -44,17 +44,17 @@ branch를 따서 원본에 새로운 기능을 구현하고
 
 완성되면 master에 합치고 망했다면 branch를 버린다.
 
-| 명령어 | 내용                          | 예시                       |
-| ------ | ----------------------------- | -------------------------- |
-| branch | branch를 생성한다             | $ git branch [branch]      |
-|        | branch 내역 확인              | $ git branch               |
-| switch | branch로 이동한다(checkout)   | $ git switch [branch]      |
-|        | 생성하면서 이동               | $ git switch -c [branch]   |
-| merge  | branch를 통합한다             | $ git merge [branch]       |
-|        | branch를 삭제한다             | $ git branch -d [branch]   |
-|        | branch 강제 삭제 (merge 없이) | $ git branch -D [branch]   |
-| reflog | log + checkout 기록까지       | $ git reflog               |
-| push   | branch를 repo에               | $ git push origin [branch] |
+| 명령어 | 내용                          | 예시                             |
+| ------ | ----------------------------- | -------------------------------- |
+| branch | branch를 생성한다             | $ git branch  <branch name>      |
+|        | branch 내역 확인              | $ git branch                     |
+| switch | branch로 이동한다(checkout)   | $ git switch  <branch name>      |
+|        | 생성하면서 이동               | $ git switch -c  <branch name>   |
+| merge  | branch를 통합한다             | $ git merge  <branch name>       |
+|        | branch를 삭제한다             | $ git branch -d  <branch name>   |
+|        | branch 강제 삭제 (merge 없이) | $ git branch -D  <branch name>   |
+| reflog | log + checkout 기록까지       | $ git reflog                     |
+| push   | branch를 repo에               | $ git push origin  <branch name> |
 
 
 
@@ -70,7 +70,9 @@ branch를 따서 원본에 새로운 기능을 구현하고
 
 branch중 기둥이되는 main 가지에서 가장 최신의 commit
 
-branch를 끌어올 때엔 (변경 사항을 취합) HEAD가 Master로 이동해야 한다.
+branch를 끌어올 때엔 (=변경 사항을 취합) 
+
+HEAD가 Master로 이동해야 한다.
 
 
 
@@ -109,6 +111,8 @@ master의 내용과 branch의 내용이 충돌할 경우
 
 
 
+
+## 정리
 
 | 명령어  | 내용                    | 예시                              |
 | ------- | ----------------------- | --------------------------------- |

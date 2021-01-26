@@ -202,19 +202,19 @@ sample = ['정', '유', '진']
 #### `.count(x)`
 
 - 원하는 값의 개수 확인
-
 - 원하는 값 모두 삭제하기
 
-  ```python
-  a = [1, 2, 5, 1, 5, 1]
-  
-  # 1의 개수만큼 range
-  for i in range(a.count(1)):
-      a.remove(1)
-  ```
+
+
+```python
+a = [1, 2, 5, 1, 5, 1]
+
+# 1의 개수만큼 range
+for i in range(a.count(1)):
+    a.remove(1)
 ```
-  
-  
+
+
 
 #### `.sort()`
 
@@ -235,7 +235,7 @@ sample = ['정', '유', '진']
 
 `중요`
 
-​```python
+```python
 original_list = [1, 2, 3]
 copy_list = original_list
 copy_list[0] = 'A'
@@ -297,6 +297,22 @@ print(id(copy_list)== id(original_list))  # True
    b[0][0] = 100
    print(a, b)
    ```
+
+
+
+![image-20210126234444631](06_data_structure_1.assets/image-20210126234444631.png)
+
+https://docs.python.org/3/library/copy.html#:~:text=A%20shallow%20copy%20constructs%20a,objects%20found%20in%20the%20original.
+
+
+
+https://stackoverflow.com/questions/184710/what-is-the-difference-between-a-deep-copy-and-a-shallow-copy#:~:text=A%20deep%20copy%20occurs%20when,objects%20to%20which%20it%20refers.&text=Shallow%20copy%20is%20a%20bit%2Dwise%20copy%20of%20an%20object.&text=If%20any%20of%20the%20fields,the%20memory%20address%20is%20copied.
+
+![image-20210126234224531](06_data_structure_1.assets/image-20210126234224531.png)
+
+![image-20210126234301657](06_data_structure_1.assets/image-20210126234301657.png)
+
+
 
 
 
