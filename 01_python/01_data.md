@@ -484,6 +484,8 @@ False, None, True, and, as, assert, async, await, break, class, continue, def, d
 
 - key와 value가 쌍으로 이루어져있다.
 
+- 현실 데이터와 닮아있다, 테이블의 레코드
+
 - {key1:val1, key2:val2, key3:val3}
 
 - key는 immutable한 데이터만 가능하고 중복되지 않는다.

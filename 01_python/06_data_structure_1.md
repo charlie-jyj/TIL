@@ -57,6 +57,8 @@ sample.index('f')  # error
 - lstrip 왼쪽 공백 제거
 - rstrip 오른쪽 공백 제거
 
+![image-20210126005942571](06_data_structure_1.assets/image-20210126005942571.png)
+
 
 
 #### `.split`
@@ -209,6 +211,7 @@ sample = ['정', '유', '진']
   # 1의 개수만큼 range
   for i in range(a.count(1)):
       a.remove(1)
+  ```
 ```
   
   
@@ -232,7 +235,7 @@ sample = ['정', '유', '진']
 
 `중요`
 
-```python
+​```python
 original_list = [1, 2, 3]
 copy_list = original_list
 copy_list[0] = 'A'
@@ -406,7 +409,20 @@ print(a+b)
   result = list(filter(is_odd, sample))  # 인자로 전달했을 때 참을 반환하는 요소만 list에
   ```
 
-  
+
+
+
+##### map과 filter과 zip은 generator
+
+`3대 or`
+
+1. generator  object:  만드는 객체, 재료로 만들고 한 번 소비하면 끝, 하나의 값  ex)  i for i in range(10)
+   1. [] 안에 넣으면 list가 된다 (한 번 쓰면 사라지니 list로 만들어 재사용하자)
+   2. 한 번 list로 만들고 set, tuple로 만들 수는 없다.
+   3. genarator에는 만드는 로직이 담겨있고 결과물의 크기와 상관없이 generator 자체의 크기는 동일
+   4. next를 통해 조금씩 크기를 늘려나간다.
+2. iterator
+3. decorator
 
 
 
