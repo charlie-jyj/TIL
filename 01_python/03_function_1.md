@@ -48,15 +48,32 @@ return은 실제로 출력되지 않는다. )
 
 ##### map () 사용하기
 
-iterable한 객체의 요소 하나하나에 function을 적용한다.
+- iterable한 객체의 요소 하나하나에 function을 적용한다.
 
-function에는 builtin 함수 뿐만 아니라 사용자 정의 함수, 람다식도 가능하다.
+- function에는 builtin 함수 뿐만 아니라 사용자 정의 함수, 람다식도 가능하다.
+- 일회성으로 쓸 수 있는 식을 람다식이라고 한다.
+  - 익명함수라고도 부른다.
+  - return이 없는 함수는 무의미하다.
+
+
 
 ```python
 list(map(function, iterable))
 
 # 예시
 list(map(str, [1, 2, 3, 4, 5]))
+
+list(map(lambda n: n+10, [1, 2, 3, 4, 5]))
+
+def plus_ten(n):
+    return n+ 10
+
+# lambda식 만들기
+# 1. def를 지운다.
+# 2. func_name을 지우고 그 자리에 lambda 키워드를 작성한다.
+# 3. 인자를 감싼 괄호를 지운다.
+# 4. enter, return을 지운다
+# lambda input : output
 ```
 
 

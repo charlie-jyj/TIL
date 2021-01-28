@@ -439,6 +439,8 @@ print(a+b)
    4. next를 통해 조금씩 크기를 늘려나간다.
 2. iterator
 3. decorator
+   1. @classmethod 처럼 @가 붙어 꾸며준다.
+   2. 어노테이션
 
 
 

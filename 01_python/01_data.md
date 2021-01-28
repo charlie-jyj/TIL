@@ -492,6 +492,10 @@ False, None, True, and, as, assert, async, await, break, class, continue, def, d
 
 - key를 통해 value에 접근한다.
 
+- 생성
+
+  - dict(key=value, key=value, key=value...)
+
 - 메소드
 
   - keys()

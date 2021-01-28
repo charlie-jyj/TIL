@@ -110,6 +110,16 @@ master의 내용과 branch의 내용이 충돌할 경우
 
 
 
+### `remote`
+
+듀얼 push를 어떻게 할까?
+
+$ git remote add KEY VALUE
+
+하나일 때는 key를 `origin`으로 정한다.
+
+
+
 
 
 ## 정리
@@ -122,9 +132,11 @@ master의 내용과 branch의 내용이 충돌할 경우
 | status  | 전체 상태 확인          | $ git status                      |
 | push    | gitlab으로 업로드       | $ git push origin master          |
 | remote  | origin 변경하기         | $ git remote set-url origin [url] |
+|         | repo add 하기           | $ git remote add [별칭] [url]     |
 | clone   | clone 받기              | $ git clone [url]                 |
 |         | 원격지 보기             | $ git remote -v                   |
 | pull    | update하기              | $ git pull                        |
+|         | 협업자가 pull 받기      | $ git pull origin main            |
 | restore | stage에서 내리기        | $ git restore --staged [파일이름] |
 | reset   | commit 취소하기         | $ git reset  [commit id]          |
 
