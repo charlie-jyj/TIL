@@ -68,17 +68,17 @@
 
 - 부모 관계, 형제 관계
 
-  ```html
-  <body>  <!--tag들의 부모-->
-      <ul> 
-          <li>ul의 자식</li>
-          <li></li>
-          <li></li>
-      </ul>
-  </body>
-  ```
+```html
+<body>  <!--tag들의 부모-->
+    <ul> 
+        <li>ul의 자식</li>
+        <li>li의 형제</li>
+        <li></li>
+    </ul>
+</body>
+```
 
-  
+
 
 ### 요소(element)
 
@@ -162,7 +162,8 @@
   - anchor 페이지 이동
   - href = url주소
   - attribute 중 target = _blank 하면 새창에서 열린다.
-  - ![image-20210201134645101](html_css.assets/image-20210201134645101.png)
+  
+    ![image-20210201134645101](html_css.assets/image-20210201134645101.png)
 - b, strong : bold
   - b  : 보여지는 것을 그냥 굵게
   - strong :  굵게 + 의미 강조
@@ -233,7 +234,7 @@
 
 - 선택자 with 개발자 도구
   - copy selector
-- python beautiful soup의 select 메서드와 함께 쓰면 의미가 있다.
+  - python beautiful soup의 select 메서드와 함께 쓰면 의미가 있다.
   - 웹크롤링의 기초
   
 - 임의의 text 채우기
