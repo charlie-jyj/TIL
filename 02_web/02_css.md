@@ -83,6 +83,8 @@ h1 { /*선택자(Selector)*/
     
 
   ```markdown
+  
+  ```
 * class 선택자
       - 클래스 선택자는 마침표(.)로 시작하며 해당 클래스가 적용된 문서의 모든 항목을 선택한다
 
@@ -93,6 +95,7 @@ h1 { /*선택자(Selector)*/
   ```
   
   
+  ```
 
 - 결합자 (combinators)
 
@@ -284,6 +287,18 @@ https://flukeout.github.io/
   - 우리가 보는 viewport 기준으로 결정된다.
 - vector width
 - vector height
+
+```css
+.container{
+      display: flex;
+      width: 75vw;  /*보이는 화면의 75%*/
+      height: 75vh;
+      border: 2px solid black;
+      align-items: center;
+    }
+```
+
+
 
 
 
