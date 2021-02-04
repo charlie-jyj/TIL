@@ -7,7 +7,7 @@
 
 
 
-## git 시작하기
+## 1 git 시작하기
 
 - `init`
   - $ git init
@@ -16,7 +16,7 @@
 
 
 
-## 변경사항 반영하기
+## 2 변경사항 반영하기
 
 - `add`
 - `commit`
@@ -24,7 +24,7 @@
 
 
 
-## 취소하기
+## 3 취소하기
 
 - `restore` 
 - `reset`
@@ -36,7 +36,7 @@
 
 
 
-## 용어 살펴보기
+## 4 용어 살펴보기
 
 ### `Branch`
 
@@ -122,23 +122,34 @@ $ git remote add KEY VALUE
 
 
 
+## 5 git으로 hosting하기
+
+- charlie-jyj.github.io
+- new repo를 위의 이름으로 생성한 후에 add remote하면 해당 프로젝트를 github 서버를 통해 
+- 아주 작은 파일이라면 웹상에 올려놓을 수 있다.
+- charlie-jyj.github.io/파일이름.확장자
+- 위와 같이 접근할 수 있다.
+
+
+
 ## 정리
 
-| 명령어  | 내용                    | 예시                              |
-| ------- | ----------------------- | --------------------------------- |
-| add     | 변경사항 stage로 올리기 | $ git add filename.md             |
-| commit  | stage에서 repo로 올리기 | $ git commit -m 'message'         |
-| log     | commit 내역 (id) 보기   | $ git log                         |
-| status  | 전체 상태 확인          | $ git status                      |
-| push    | gitlab으로 업로드       | $ git push origin master          |
-| remote  | origin 변경하기         | $ git remote set-url origin [url] |
-|         | repo add 하기           | $ git remote add [별칭] [url]     |
-| clone   | clone 받기              | $ git clone [url]                 |
-|         | 원격지 보기             | $ git remote -v                   |
-| pull    | update하기              | $ git pull                        |
-|         | 협업자가 pull 받기      | $ git pull origin main            |
-| restore | stage에서 내리기        | $ git restore --staged [파일이름] |
-| reset   | commit 취소하기         | $ git reset  [commit id]          |
+| 명령어  | 내용                     | 예시                              |
+| ------- | ------------------------ | --------------------------------- |
+| add     | 변경사항 stage로 올리기  | $ git add filename.md             |
+| commit  | stage에서 repo로 올리기  | $ git commit -m 'message'         |
+|         | 직전 commit message 수정 | $ git commit --amend              |
+| log     | commit 내역 (id) 보기    | $ git log                         |
+| status  | 전체 상태 확인           | $ git status                      |
+| push    | gitlab으로 업로드        | $ git push origin master          |
+| remote  | origin 변경하기          | $ git remote set-url origin [url] |
+|         | repo add 하기            | $ git remote add [별칭] [url]     |
+| clone   | clone 받기               | $ git clone [url]                 |
+|         | 원격지 보기              | $ git remote -v                   |
+| pull    | update하기               | $ git pull                        |
+|         | 협업자가 pull 받기       | $ git pull origin main            |
+| restore | stage에서 내리기         | $ git restore --staged [파일이름] |
+| reset   | commit 취소하기          | $ git reset  [commit id]          |
 
 
 

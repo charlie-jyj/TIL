@@ -54,3 +54,19 @@
 ![image-20210202130023126](css_property.assets/image-20210202130023126.png)
 
 ![image-20210202125902938](css_property.assets/image-20210202125902938.png)
+
+
+
+### 4 tab-index 란?
+
+- user가 마우스나 키보드 tab으로 접근할 수 있는 요소
+
+- default는 0
+
+- -1로 지정하면 tab으로 접근할 수 없다.
+
+  
+
+https://stackoverflow.com/questions/32911355/whats-the-tabindex-1-in-bootstrap-for
+
+![image-20210204001904241](03_css_practice.assets/image-20210204001904241.png)
