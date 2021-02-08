@@ -69,33 +69,20 @@ h1 { /*선택자(Selector)*/
 - 기본선택자
 
   - 전체 선택자  `*`
-
   - 요소 선택자 
 
     - h1, p와 같은 element
-
   - 클래스 선택자
-
+  - 클래스 선택자는 마침표(.)로 시작하며 해당 클래스가 적용된 문서의 모든 항목을 선택한다
   - 아이디 선택자
-
+    - 아아디 선택자는 우물정자(#)로 시작하며 기본적으로 클래스 선택자와 같은 방식으로 사용
+    - 그러나 id는 문서당 한 번만 사용할 수 있고 요소에는 단일 id 값만 적용할 수 있다.
+    - 원칙적으로 한 문서에 한 아이디
   - 속성 선택자
 
-    
 
-  ```markdown
   
-  ```
-* class 선택자
-      - 클래스 선택자는 마침표(.)로 시작하며 해당 클래스가 적용된 문서의 모든 항목을 선택한다
 
-  * id 선택자
-    - 아아디 선택자는 우물정자(#)로 시작하며 기본적으로 클래스 선택자와 같은 방식으로 사용
-      - 그러나 id는 문서당 한 번만 사용할 수 있고 요소에는 단일 id 값만 적용할 수 있다.
-      - 원칙적으로 한 문서에 한 아이디
-  ```
-  
-  
-  ```
 
 - 결합자 (combinators)
 
@@ -553,3 +540,141 @@ time, mark, audio, video {
 1. Bootstrap
 2. Semantic
 3. Materialize
+
+
+
+## 5 Media query
+
+>Bootstrap의 breakpoint를 가능하게 만드는 기제
+>
+>반응형의 기본
+
+
+
+- 반응형 디자인의 핵심 구성 요소
+- @media
+
+
+
+```css
+@media media-type and (media-feature-rule){
+    /*CSS rules fo here*/
+}
+```
+
+
+
+- 미디어 유형
+
+- 어떤 상황, 어떤 화면인지
+
+  - all
+    - 일반적인 경우
+  - print
+    - 페이지가 인쇄된 경우
+  - screen
+  - speech
+
+  
+
+- 기능규칙
+
+- and (논리곱)로 여러가지 기능 규칙을 한 번에 적용할 수 있다
+
+  - 너비와 높이
+    - width (==limit)
+    - max-width (<=limit)
+    - min-width (>=limit)
+  - 방향성
+    - orientation: landscape
+    - 화면 가로 모드
+    - 
+
+
+
+
+
+## 6 Animation
+
+>https://animate.style/
+
+
+
+##### Syntax
+
+```css
+/* @keyframes duration | easing-function | delay |
+iteration-count | direction | fill-mode | play-state | name */
+animation: 3s ease-in 1s 2 reverse both paused slidein;
+
+/* @keyframes name | duration | easing-function | delay */
+animation: slidein 3s linear 1s;
+
+/* @keyframes name | duration */
+animation: slidein 3s;
+```
+
+
+
+##### 추가
+
+- animation-fill-mode
+  - none
+  - forwards
+    - playing~finished~
+    - 끝나고 유지 (retain the computed values)
+  - backwards
+    - delaying~playing
+
+
+
+##### keyframes
+
+```css
+@keyframes slidein {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+```
+
+
+
+![image-20210205100513096](02_css.assets/image-20210205100513096.png)
+
+
+
+##### Example
+
+```css
+.cylon_eye {
+  background-color: red;
+  background-image: linear-gradient(to right,
+      rgba(0, 0, 0, .9) 25%,
+      rgba(0, 0, 0, .1) 50%,
+      rgba(0, 0, 0, .9) 75%);
+  color: white;
+  height: 100%;
+  width: 20%;
+
+  -webkit-animation: 4s linear 0s infinite alternate move_eye;
+          animation: 4s linear 0s infinite alternate move_eye;
+}
+
+@-webkit-keyframes move_eye { from { margin-left: -20%; } to { margin-left: 100%; }  }
+        @keyframes move_eye { from { margin-left: -20%; } to { margin-left: 100%; }  }
+
+```
+
+
+
+
+
+## 7 Font
+
+- Google fonts
+- 
