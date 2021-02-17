@@ -149,21 +149,17 @@ M = len(p)  # 찾을 패턴의 길이
 N = len(t)  # 전체 텍스트의 길이
 
 def BruteForce(p, t):
-    i = 0  # t의 인덱스
-    j =0  # p의 인덱스
-    while j < M and i < N:
-        
-        if t[i] != p[j]:
-            i = i-j  # 원점으로 돌아온다
-            j = -1
+    i = 0
+    j = 0
+    while i != N and j != M:
+        if t[i] == p[j]:
+            i += 1
+            j += 1
+        else:
+            i = i-j+1
+            j = 0
             
-        i = i+1  # 다음으로 간다
-        j = j+1
-        
-    if j == M: 
-        return i-M  # 검색성공
-    else:
-        return -1  # 검색실패
+    return i-j if j == M else -1
 ```
 
 
@@ -186,6 +182,40 @@ def BruteForce(p, t):
 - next[M]
   - 불일치가 발생했을 경우 이동할 다음 위치를 계산한다
 
+```python
+def kmp_match(txt, pat):
+    
+    pt = 1  # txt를 따라가는 커서
+    pp = 0  # pat를 따라가는 커서
+    skip = [0] * (len(pat)+1)  # 건너뛰기 표
+    
+    # 건너뛰기 표 만들기
+    skip[pt] = 0  # skip[1] = 0 1번째 패턴 값이 일치하지 않으면 어차피 0번째 패턴부터 비교
+    while pt != len(pat):
+        if pat[pt] == pat[pp]:
+            pt += 1
+            pp += 1
+        	skip[pt] = pp
+        elif pp == 0:
+            pt += 1
+            skip[pt] = 0
+        else:
+            pp = skip[pp]
+            
+    # 문자열 검색하기
+    pt = pp = 0
+    while pt != len(txt) and pp  != len(pat):
+        if txt[pt] == pat[pp]:
+            pt += 1
+            pp += 1
+        elif pp == 0:
+            pt += 1
+        else:
+            pp = skip[pp]
+            
+    return pt-pp if pp == len(pat) else -1
+```
+
 
 
 #### 시간복잡도
@@ -205,6 +235,41 @@ def BruteForce(p, t):
 - 패턴에 오른쪽 끝에 있는 문자가 불일치하고 
 - 이 문자가 패턴 내에 존재하지 않는 경우
 - 이동 거리는 패턴의 길이만큼
+
+
+
+```python
+def bm_match(txt, pat):
+    
+    skip = [None] * 256
+    
+    # 건너뛰기 표 만들기
+    for pt in range(256):
+        skip[pt] = len(pat)
+    for pt in range(len(pat)):
+        skip[ord(pat[pt])] = len(pat)-1-pt
+        
+    # 검색하기
+    while pt < len(txt):
+        pp = len(pat) -1
+        while txt[pt] == pat[pp]:
+            if pp == 0:
+                return pt
+            pt -= 1
+            pp -= 1
+        # 무한 반복을 방지한다. 패턴 안에 중복되는 문자가 있을 경우
+        # skip은 중복되는 문자 중 마지막 값의 인덱스를 기준으로 저장하기 때문에
+        # 앞선 중복된 문자까지 pt와 pp가 이동해있을 경우에도 skip만큼 이동하면
+        # pt가 더이상 앞으로 나아가지 못하는 문제가 생길 수 있다.
+        # if 문으로 분기해 pp가 원위치+1의 자리에서 새롭게 시작하게 한다.
+        pt += skip[ord(txt[pt])] if skip[ord(txt[pt])] > len(pat)-pp else len(pat)-pp
+        
+        return -1
+```
+
+
+
+
 
 
 
