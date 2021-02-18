@@ -33,7 +33,7 @@ for i in range (len(array)):
 
 ```python
 # i 행, j 열
-for j in range(len(arr[0])):
+for j in range(len(array[0])):
     for i in range(len(array)):
         array[i][j]
 ```

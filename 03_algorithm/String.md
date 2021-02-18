@@ -1,3 +1,5 @@
+
+
 # String
 
 
@@ -76,6 +78,14 @@
 
 - reverse()
 - [::-1]
+
+![image-20210218092859176](String.assets/image-20210218092859176.png)
+
+![image-20210218092957386](String.assets/image-20210218092957386.png)
+
+![image-20210218092752926](String.assets/image-20210218092752926.png)
+
+
 
 
 
