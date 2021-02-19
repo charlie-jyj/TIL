@@ -152,15 +152,21 @@ def i_to_a(number):
 
 > 본문 문자열을 처음부터 끝까지 차례대로 순회하면서 패턴 내의 문자들을 일일이 비교한다.
 
+
+
+- while
+
 ```python
 p = 'is'  # 찾을 패턴
 t = 'This is a book'  # 전체 텍스트
 M = len(p)  # 찾을 패턴의 길이
 N = len(t)  # 전체 텍스트의 길이
 
-def BruteForce(p, t):
+def brute_force_while(p, t):
+    
     i = 0
     j = 0
+    
     while i != N and j != M:
         if t[i] == p[j]:
             i += 1
@@ -171,6 +177,29 @@ def BruteForce(p, t):
             
     return i-j if j == M else -1
 ```
+
+
+
+- for
+
+```python
+def brute_force_for(t, p):
+    n = len(t)
+    m = len(p)
+    for i in range(n-m+1):
+        cnt = 0
+        for j in range(m):
+            if t[i+j] == p[j]:
+                cnt += 1
+            else:
+                break
+
+        if cnt == m:
+            return i
+    return -1
+```
+
+
 
 
 
