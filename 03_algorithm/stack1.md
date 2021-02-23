@@ -12,7 +12,8 @@
   - 자료 간의 관계가 1:1 관계
   - 비선형 구조
     - 자료 간의 관계가 1: N 관계 (트리)
-
+  - 순환 (그래프)
+  
 - 스택에 자료를 삽입하거나 스택에서 자료를 꺼낼 수 있다
 - 마지막에 삽입한 자료를 가장 먼저 꺼낸다
   - Last In First Out
@@ -150,8 +151,8 @@ print(memo)
 
 ### 구현 방식
 
-- recursive
-- iterative (fibo2)
+- recursive (재귀) : top-down
+- iterative (반복문) : bottom-up
 
 
 
@@ -243,8 +244,8 @@ DFS_Recursive(G, v) // graph, 현재 visit 정점
 visited[v] = true
 
 for each all w in adjacency(G, v) // 인접한 모든 w
-	if visited[2] != true
-		DFS_Recursive(G, w)
+	if visited[w] != true
+		DFS_Recursive(G, w)  // return 하지 않는다
 ```
 
 
@@ -267,18 +268,77 @@ DFS(v)
 
 
 
+##### 인접(Adjacency)
+
+- 두 개의 정점에 간선이 존재하면 서로 인접해 있다고 한다.
+- 완전 그래프에 속한 임의의 두 정점들은 모두 인접해 있다.
+
+
+
 ##### 인접한 노드를 어떻게 알지?
 
 1. 인접 행렬
+   1. v * v 크기의 2차원 배열을 이용해서 간선 정보 저장
+   2. 행 번호와 열 번호는 그래프의 정점에 대응한다.
+   3. 인접되어 있으면 1, 그렇지 않으면 0으로 표현
+   4. 정점은 아주 많고 간선은 아주 적다면 불리하다.
 
 ![img](https://t1.daumcdn.net/cfile/tistory/99F7B9485B54360A21)
 
 2. 인접 리스트
 
+   1. 각 정점 마다 해당 정점으로 나가는 간선의 정보를 저장
+   2. 정석 구현은 연결 리스트로 구현한다.
+   3. 파이썬은 보다 간단하게 구현할 수 있다. (2차원 배열로)
+   4. 조회만 할 때엔 유용하지만 연결 여부를 바로 알기 어렵다.
+
+   ```
+   [
+   [1, 3]
+   [0, 2, 3]
+   [1,3]
+   [0, 1, 2]
+   ]
+   ```
+
+   
+
 ![img](https://t1.daumcdn.net/cfile/tistory/9992FC4B5B543F5C0F)
+
+
+
+3. 간선의 배열
 
 
 
 - 정점의 개수 (노드의 수)
 - 간선의 수  (연결선)
-  - 유향/ 무향/ 쌍방향 차이 존재 (문제에서 확인)
+  - 유향
+  - 무향(쌍방향) 차이 존재 (문제에서 확인)
+
+
+
+```python
+V, E = map(int, input().split())
+
+# V*V 크기 0으로 초기화 된 2차원 리스트를 선언한다.
+adj_arr = [[0]*V for _ in range(V)]
+
+# V개의 빈리스트를 선언하여 사용한다.
+adj_list = [[] for _ in range(V)]
+
+for i in range(E):
+    A, B = map(int, input().split())
+
+    adj_arr[A][B] = 1
+    adj_arr[B][A] = 1  # 유향일 때엔 생략
+
+    adj_list[A].append(B)
+    adj_list[B].append(A)  # 유향일 때엔 생략
+
+for i in adj_arr:
+    print(*i)
+```
+
+
+
