@@ -432,3 +432,4 @@ def partition(a, begin, end):
 
 
 
+![image-20210225013534282](stack2.assets/image-20210225013534282.png)
