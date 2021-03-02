@@ -244,7 +244,7 @@ DFS_Recursive(G, v) // graph, 현재 visit 정점
 visited[v] = true
 
 for each all w in adjacency(G, v) // 인접한 모든 w
-	if visited[w] != true
+	if visited[w] != true and adjacency[v][w] == '연결'
 		DFS_Recursive(G, w)  // return 하지 않는다
 ```
 
