@@ -209,6 +209,8 @@ print(memo)
 
 
 
+##### 의사 코드
+
 ```java
 visited = []
 stack = []
@@ -238,28 +240,36 @@ DFS(v):
 
 
 
-```
-DFS_Recursive(G, v) // graph, 현재 visit 정점
+##### 재귀
 
-visited[v] = true
+```python
+def DFS_Recursive(G, v): # graph, 현재 visit 정점
 
-for each all w in adjacency(G, v) // 인접한 모든 w
+visited[v] = True
+
+for w in adjacency(G, v) # 인접한 모든 w
 	if visited[w] != true and adjacency[v][w] == '연결'
-		DFS_Recursive(G, w)  // return 하지 않는다
+		DFS_Recursive(G, w)  # return 하지 않는다
 ```
 
 
 
-```
-Stack s
+##### 스택
+
+```python
 visited = []
-DFS(v)
+
+def DFS(v):
+    s = []
 	s.push(v)
-	while not isEmpty(stack): //stack이 empty 할 때까지
+    
+	while stack:  # stack이 empty 할 때까지
 		v = stack.pop()
+		
 		if not(visited[v]):
-			visit[v] = true
-			for each w in adjacency(v):
+			visit[v] = True
+			
+			for w in adjacency(v):
 				if not visited[w]
 					stack.push(w)
 ```
