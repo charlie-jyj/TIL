@@ -44,7 +44,7 @@
 
 
 
-## 주요 명령어
+## 1 주요 명령어
 
 ### django-admin startproject 프로젝트 이름
 
@@ -102,9 +102,13 @@
 
 
 
-#### 앱을 프로젝트에 등록하기  (settings.py)
+#### 🎯앱을 프로젝트에 등록하기  (settings.py)
 
-##### app order
+> 반드시 출생신고
+
+
+
+##### *app order
 
 1. local apps
 2. 3rd- party apps
@@ -125,6 +129,7 @@
 #### template 생성
 
 - ✨template이 들어있는 폴더의 이름은 반드시 templates
+- django 는 html 파일을 찾을 때 특정 앱 안의 templates 폴더를 탐색하기 때문이다. (INSTALLED_APPS 에 등록된) 
 
 ![image-20210308102008322](django_01.assets/image-20210308102008322.png)
 
@@ -132,7 +137,7 @@
 
 
 
-## 주요 파일
+## 2 주요 파일
 
 #### urls.py
 
@@ -154,7 +159,7 @@
 
    2. ✨첫번째 인자는 무조건 request
 
-   3. 두번째 인자는 template 경로 
+   3. 두번째 인자는 template 파일 이름
 
    4. django는 templates 까지의 경로는 이해하고 있으므로 그 이후의 경로를 작성한다.
 
@@ -170,6 +175,10 @@
       - dictionary로 전달한다.
 
    ![image-20210308104001040](django_01.assets/image-20210308104001040.png)
+
+   6. response를 직접 반환할 수도 있다.
+      - `from django.http.response import HttpResponse`
+      - `return HttpResponse('string')`
 
 
 
@@ -189,11 +198,11 @@ django.contrib.admin
 
 
 
-## DTL
+## 3 DTL
 
 > 데이터 표현을 제어하는 도구이자 표현에 관련된 로직
 >
-> DTL (Django Template Logic)
+> DTL (Django Template Language)
 >
 > built-in template system
 >
@@ -275,7 +284,7 @@ django.contrib.admin
 
 
 
-## Template inheritance
+## 4 Template inheritance
 
 > 코드의 재사용성에 초점
 >
@@ -285,22 +294,31 @@ django.contrib.admin
 
 
 
+### skeleton templates 의 위치를 어디에 둘까?
+
+1. master app 안에 
+2. 프로젝트 ROOT 안에 (공식문서 제안)
+
+
+
 - {%  `extends` %}
 
   - 🎈템플릿의 최상단에 작성
 
   - 부모 템플릿의 경로 작성
 
-  - 부모인 project 의 templates 위치는 알지 못하므로 새로운 templates 경로를 추가한다.
+  - 부모 templates 위치는 알지 못하므로 새로운 templates 경로를 추가한다.
 
-    - settings.py
+    - `settings.py`
 
     - 추가 경로를 작성할 일이 많기 때문에 최상위 폴더 경로를 상수로 선언 `BASE_DIR` (OS에 영향받지 않는 작성 방법)
+
+    - 내가 파일을 아무리 옮긴다고 해도 ROOT 의 위치를 잡아준다.
 
       ![image-20210308141731298](django_01.assets/image-20210308141731298.png)
 
       ##### python pathlib 참고
-
+    
       
 
 
@@ -322,8 +340,9 @@ django.contrib.admin
 - 자식
 
   - 템플릿 최상단에 extends 태그 작성
-  - block 태그 내부에 재정의
-
+    - 무조건 최상단, comment tag 도 있으면 안 된다
+- block 태그 내부에 재정의
+  
   
 
 ![image-20210308142245015](django_01.assets/image-20210308142245015.png)
@@ -352,7 +371,7 @@ django.contrib.admin
 
 
 
-## HTML form element
+## 5 HTML form element
 
 ### form 핵심 속성
 
@@ -360,6 +379,8 @@ django.contrib.admin
   - form 이 전달될 URL
 - method
   - 정보 전달 방식
+  - "/index/"
+    - 앞의 / 는 root를 함축한다.
 
 
 
@@ -371,6 +392,10 @@ django.contrib.admin
   - 데이터의 key
   - key를 통해 value에 접근한다. 
   - ?key=value&key=value 형식으로 전달된다.
+
+
+
+![image-20210309170726518](django_01.assets/image-20210309170726518.png)
 
 
 
@@ -400,6 +425,8 @@ django.contrib.admin
 
 
 - request 내부에 GET으로 전달된 데이터가 dictionary 형태로 들어있다.
+  - `request.GET`  = {key:value, key:value}
+  - request 의 멤버
 
 ![image-20210308151502476](django_01.assets/image-20210308151502476.png)
 
@@ -407,7 +434,7 @@ django.contrib.admin
 
 
 
-## URL
+## 6 URL
 
 > Dispatcher (발송자) 로서의 URL
 >
@@ -444,9 +471,14 @@ django.contrib.admin
 
 
 - url주소/<<자료형:이름>>/
-- 기본값 str 이므로 생략 가능
+- 기본값 str 이므로 생략 가능하다
   - <name>
-- GET.get() 하지 않고 전달 인자로 넘어온 변수를 바로 사용할 수 있다. 
+  - 입력값은 string인 것이 룰
+  - 하지만 django는 int:name 을 지원한다.
+- views 의 함수에 keyword 인자로 넘어온다.  (이름을 key값으로 하여)
+  - name = '입력값'
+  - 따라서 함수 정의 할 때, parameter로 넣어주어야 한다.
+- request.GET.get() 하지 않고 전달 인자로 넘어온 변수를 바로 사용할 수 있다. 
 
 
 
@@ -476,11 +508,50 @@ django.contrib.admin
 
   ![image-20210308163639174](django_01.assets/image-20210308163639174.png)
 
-##### 다른 app에 같은 name을 가진 path가 있다면?
+##### 다른 App에 같은 name을 가진 path가 있다면?
 
-- 추후에 보게 됩니다.
+- *namespace* 를 고려해보자
+- `app_name` 변수를 설정하는 순간부터 name space 적용된다.
+- `{% url 'app_name:alias' %}`
+
+![image-20210309175108779](django_01.assets/image-20210309175108779.png)
+
+![image-20210309175155053](django_01.assets/image-20210309175155053.png)
 
 
+
+
+
+
+
+## 7 Namespace
+
+> 내가 원하는 template 이 아니라, 동명의 다른 template 이 나와버렸다.
+>
+> INSTALLED_APPS에 등록되어 있는 순서대로 template을 탐색하기 때문에..
+
+
+
+##### template의 이름을 고치거나, App 등록 순서를 바꾸는 것은 미봉책
+
+- django가 각 app의 templates 내부를 ctrl+a, ctrl+c, ctrl+v 하는 것을 이용한다.
+- templates 내부에 app 이름과 동일한 폴더를 만들어 그 안에 파일을 둔다.
+
+- app_name > templates > app_name > html 파일
+
+![image-20210309135534654](django_01.assets/image-20210309135534654.png)
+
+
+
+##### views에서 render() 에 html 파일 이름을 넘길 때, 상위 폴더 경로와 함께 넘긴다.
+
+![image-20210309135748270](django_01.assets/image-20210309135748270.png)
+
+
+
+##### app을 만들면, 출생신고 후에 templates/<app_name> 으로 폴더를 만들고 시작
+
+- `$ mkdir -p app_name/templates/app_name`
 
 
 
@@ -592,6 +663,6 @@ django.contrib.admin
 2. 기본적으로 필요한 코드
 
    - from django.urls import path
-   - urlpatterns
+   - urlpatterns**
 
    <img src="django_01.assets/image-20210308175604363.png" alt="image-20210308175604363"  />
