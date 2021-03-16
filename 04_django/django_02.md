@@ -11,6 +11,8 @@
 > 데이터 베이스의 구조 (일반적으로 1 model : 1 table 매칭)
 >
 > django 는 model 을 통해 데이터에 접속하고 관리한다.
+>
+> Skinny Controller Fat Model
 
 
 
@@ -43,6 +45,12 @@
 ![image-20210310110055217](django_02.assets/image-20210310110055217.png)
 
 - 매직 메서드 str 을 수정하여 출력될 때 보여줄 필드를 정할 수 있다.
+- Field에 여러 option이 들어갈 수 있다
+  - auto_now_add = True
+  - auto_now = True
+  - default
+  - null = True
+    - 하지만 DB에 null이 난무하는 건 바람직하지 않다.
 
 
 
@@ -105,6 +113,10 @@ model 변경에 기반한 새로운 마이그레이션을 만들 때 사용
 
 우리가 설계한 클래스를 기반으로 ORM이 해석할 수 있는 설계도를 만든다.
 
+- `python` `manage.py`  `makemigrations` `app_name`
+- class variable 만 확인하여 DB의 column화 한다.
+  - 기타 매직 메서드 등은 migration의 change로 취급하지 않는다.
+
 
 
 #### 🎃migrate
@@ -114,6 +126,11 @@ model 변경에 기반한 새로운 마이그레이션을 만들 때 사용
 위에서 만든 마이그레이션을 실제 DB에 반영한다. (설계도 전달)
 
 모델에서의 변경 사항과 DB가 **동기화** 
+
+
+
+- db.sqlite3 의 django_migrations 에 적용된 migrations의 버전이 기록되어 있다.
+- 그 기록을 기반으로 migrate 한다.
 
 
 
@@ -385,3 +402,26 @@ admin.site.register(Article, ArticleAdmin)
 
 
 https://docs.djangoproject.com/en/3.1/ref/contrib/admin/
+
+
+
+## fixture
+
+- 모델의 초기 데이터 제공하기
+- json file
+- `python` `manage.py` `dumpdata` --indent 4 `movies.movie` > movies.json
+- data base 의 파일을 json 파일로 추출
+- movies에 fixtures 폴더를 생성 (django가 인식할 수 있도록)
+  - movies 폴더를 만들고
+  - json 파일을 폴더에 옮긴다
+- `python` `manage.py` `migrate` 후에
+  - migrations가 이미 만들어져서 git으로 넘어왔기 때문에 
+- `python` `manage.py` `loaddata` `movies.movies.json`
+
+
+
+## 초기화
+
+- `rm db.sqlite3`
+- `rm app_name/migrations/0*`
+- 
