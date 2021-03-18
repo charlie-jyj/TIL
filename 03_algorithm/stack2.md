@@ -410,7 +410,7 @@ def partition(a, begin, end):
 	while L < R:
 		while(a[L]<a[pivot] and L<R) : L += 1  # L은 pivot 값 과 같거나 클때 멈춘다
 		
-		while(a[R]>=a[pivot] and L<R) : R -= 1  # R은 pivot 깂 보다 작을 때 멈춘다
+		while(a[R]>=a[pivot] and L<R) : R -= 1  # R은 pivot 값 보다 작을 때 멈춘다
 		
 		if L < R:
 			if L == pivot:
