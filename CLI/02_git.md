@@ -36,6 +36,69 @@
 
 
 
+### Git Undo
+
+#### add 취소
+
+- add 취소하기
+  - git rm --cached  < file_name >
+- commit 후에 로컬 수정 후 add 했을 때 취소 (수정한 파일 취소)
+  - git restore --staged < file >
+
+
+
+####  마지막 commit 취소
+
+- commit message 수정
+  - git commit --amend
+  - i, esc, :wq
+- 파일을 누락했을 때
+  - 누락한 파일 add (git add d)
+  - 마지막 commit과 합치기 ('update cd')
+    - commit 을 내려놓고 staging area로 보내기
+    - git commit --amend
+    - :wq
+
+
+
+#### 시간 되돌리기
+
+> reset
+>
+> 사용하지 말자.
+
+##### 1. hard
+
+- git reset --hard < commit 이름 >
+- 로그를 보면 완전히 과거로 돌아갔다
+- 코드도 과거의 코드로 돌아간다 
+- 기억도 삭제
+
+
+
+##### 2. soft
+
+- git reset --soft < commit  이름>
+- 로그를 보면 과거로 돌아갔는데
+- git status 를 보면 지금까지의 수정사항이 staging area에 올라가 있다.
+- git log: 팝콘 구매 
+- git status: 팝콘 구매 이후의 미래가 저장되어 있다 (기억은 남아있다)
+- 여기서 commit 하면 달라지는 것 없다
+
+
+
+##### 3. mixed (default)
+
+- git reset < commit 이름>
+- 로그를 보면 과거로 돌아갔다
+- git status를 보면 현재까지의 수정사항이 add 전 working directory에 올라가 있다.
+- 여기에서 add를 하면 staging area에 올라갈 것
+- 
+
+
+
+
+
 ## 4 용어 살펴보기
 
 ### `Branch`
@@ -140,6 +203,7 @@ $ git remote add KEY VALUE
 | commit  | stage에서 repo로 올리기  | $ git commit -m 'message'         |
 |         | 직전 commit message 수정 | $ git commit --amend              |
 | log     | commit 내역 (id) 보기    | $ git log                         |
+|         | 한 줄로 보기             | $ git log --oneline               |
 | status  | 전체 상태 확인           | $ git status                      |
 | push    | gitlab으로 업로드        | $ git push origin master          |
 | remote  | origin 변경하기          | $ git remote set-url origin [url] |

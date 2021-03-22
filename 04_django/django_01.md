@@ -5,7 +5,7 @@
 
 
 - static web
-  - 미리 저장된 정적 파일 제공 (HTML, CSS, JS)
+  - 미리 저장된 정적 파일 제공 (HTML, CSS)
 - dynamic web
   - 사용자의 요청에 따라 server-side에서 정보를 만들어 반환
   - jsp, sql, php
@@ -244,7 +244,7 @@ https://docs.djangoproject.com/en/3.1/topics/http/shortcuts/#redirect
 
 - render() 의 세번째 인자로 {'key' : 'value'} 와 같이 딕셔너리로 전달되고 key로 접근한다.
 
-  ​				![image-20210308104707899](django_01.assets/image-20210308104707899.png
+  
 
 ![image-20210308105347309](django_01.assets/image-20210308105347309.png)
 

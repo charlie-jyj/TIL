@@ -163,7 +163,11 @@ css, images, javascript 폴더로 구분하여 분류한다.
 
 ### Image kit 사용하기
 
-- pip install `pilkit` `django-imagekit`
+- ## Installation
+
+  1. Install [PIL](http://pypi.python.org/pypi/PIL) or [Pillow](http://pypi.python.org/pypi/Pillow). If you’re using an `ImageField` in Django, you should have already done this.
+  2. `pip install django-imagekit` (or clone the source and put the imagekit module on your path)
+  3. Add `'imagekit'` to your `INSTALLED_APPS` list in your project’s settings.py
 
 
 
@@ -173,6 +177,7 @@ css, images, javascript 폴더로 구분하여 분류한다.
 
 - 업로드한 원본을 저장할 경우
   - Image Spec Field 
+    - 원본 source 가 되는 field 를 지정하는 것이 필요하다.
 - 원본 저장없이 process하고 결과물이 필요한 경우
   - Processed Image Field
 - Specs
@@ -181,10 +186,13 @@ css, images, javascript 폴더로 구분하여 분류한다.
   - upload_to
     - 폴더 생성하여 이 객체를 통해 저장되는 이미지를 따로 관리할 수 있다
     - media to 경로 이하의 폴더
+    - upload_to = 'images/%Y/%m/%d'
   - blank
     - ORM이 비어있는 것을 허용할지 여부 결정
   - processors 
     - 이미지를 처리한다
+    - 공식문서 참고
+    - https://github.com/matthewwithanm/pilkit/tree/master/pilkit/processors
   - format
     - 이미지 확장자를 결정한다
   - options
@@ -195,3 +203,4 @@ css, images, javascript 폴더로 구분하여 분류한다.
 
 
 ##### https://django-imagekit.readthedocs.io/en/latest/#usage-overview
+

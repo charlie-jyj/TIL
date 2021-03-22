@@ -27,7 +27,7 @@
 | i      | insert, 수정 모드             |                       |
 | esc    | exit, insert 모드에서 나간다. |                       |
 | :q     | quit, 파일을 나간다           |                       |
-| :w     | write, 작성 내용을 저장한다.  | :wp 하면 저장 후 닫기 |
+| :w     | write, 작성 내용을 저장한다.  | :wq 하면 저장 후 닫기 |
 | dd     | 한 줄 지우기                  |                       |
 | esc u  | undo                          |                       |
 
@@ -38,3 +38,9 @@
 - git commit 후 enter하면, vim 창이 열린다. 
 - `i` 로 insert 모드 들어가면 최상단에 commit message 작성하면 끝!
 
+
+
+## 연습하기
+
+1. open vim
+2. vim adventure (유료)

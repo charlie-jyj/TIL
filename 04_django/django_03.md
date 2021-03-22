@@ -65,7 +65,7 @@
 
 ##### 사용하기
 
-- multiple choices 하는 input 태그 만들기
+- radio button input 태그 만들기
 
 ![image-20210317095403447](django_03.assets/image-20210317095403447.png)
 
@@ -246,6 +246,21 @@ form = ArticleForm(instance = article)
 - 템플릿 내에서 다른 템플릿을 포함하는 방법
 
 ![image-20210317103341099](django_03.assets/image-20210317103341099.png)
+
+
+
+## form.html 통일하기
+
+![image-20210319101201229](django_03.assets/image-20210319101201229.png)
+
+- 요청받은 url_name에 따라서 다른 화면이 출력된다.
+- `request.resolver_match.url_name`
+- resolver_match 객체의 url_name attribute
+- https://docs.djangoproject.com/en/3.1/ref/request-response/
+
+![image-20210319101608852](django_03.assets/image-20210319101608852.png)
+
+![image-20210319101645688](django_03.assets/image-20210319101645688.png)
 
 
 
