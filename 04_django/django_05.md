@@ -173,7 +173,7 @@
 
 
 
-## login
+## 1) login
 
 ### views
 
@@ -240,13 +240,16 @@
 
 ##### * request.user 을 사용했는데 어떻게 바로 username 이 나오지?
 
+- 미들웨어(SessionMiddleware) 를 거치며 cookie 에 담긴 session_id 를 통해 decode 된 user 객체를 
+-  request.user 로 가질 수 있게 되고
+
 - 클래스 내부 str (매직메서드)가 username 을 return 하고 있기 때문
 
+![image-20210323232119477](django_05.assets/image-20210323232119477.png)
 
 
 
-
-## logout
+## 2) logout
 
 ### views
 
@@ -290,7 +293,7 @@ def login(request):
 - 사용자가 로그인 했는지 확인하는 view를 위한 데코레이터
 - 로그인 된 사용자의 경우 해당 view 함수 실행
 - 로그인 하지 않은 사용자는 settings.LOGIN_URL 에 설정된 경로로 redirect 시킴
-  - LOGIN_URL 의 기본값은 '/accounts/login/'
+  - LOGIN_URL 의 기본값은 `/accounts/login/`
   - 우리가 app의 이름을 accounts를 사용한 이유, django가 기본 URL 설정을 위와 같이 했기 때문
   - create, update, delete
 
@@ -333,7 +336,7 @@ from django.contrib.auth.decorators import login_required
 
   
 
-## SignUp (create)
+## 3) SignUp (create)
 
 - 로그인하지 않은 상태일 때, 회원가입을 진행한다.
 - `UserCreationForm`
@@ -349,7 +352,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-## Delete
+## 4) Delete
 
 - 로그인한 유저인지 확인
 - 현재의 요청을 보낸 user = `request.user` 를 삭제한다.
@@ -360,7 +363,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-## Update
+## 5) Update
 
 > custom 하지 않으면 너무 많은 필드를
 >
@@ -373,6 +376,7 @@ from django.contrib.auth.decorators import login_required
 ### forms
 
 - `UserChangeForm`을 상속받아 CustomUserChangeForm 을 정의한다.
+- user의 생성과 수정의 form 이 나뉘는 이유는 비밀번호 수정 때문이다.
 - **class Meta**
 - user를 직접 인용하는 것을 권장하지 않고 `get_user_model()` 함수를 사용한다.
 - fields '__ all __'  대신에 사용할 attribute 만 튜플 형태로 가져온다.
@@ -395,9 +399,19 @@ from django.contrib.auth.decorators import login_required
 
 
 
+## 6) Change Password
+
+
+
+
+
+
+
+
+
 ----
 
-## 1 class User
+## 1. class User
 
 > 현재 따로 추가할 필드가 존재하지 않더라도 
 >
@@ -405,7 +419,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-### 1) User objects
+### 1-1. User objects
 
 - django 인증 시스템의 핵심
 - Users 가 django 인증 시스템에서 표현되는 모델
@@ -424,13 +438,7 @@ from django.contrib.auth.decorators import login_required
 
 ![image-20210322154912962](django_05.assets/image-20210322154912962.png)
 
-
-
-
-
-
-
-- from django.contrib.auth.models import User
+- `from django.contrib.auth.models` `import User`
 
   
 
@@ -441,7 +449,31 @@ from django.contrib.auth.decorators import login_required
 
 
 
-### 2) AbstractUser
+##### 🎃 AUTH_USER_MODEL
+
+- 사용자 관리 모델의 조건
+  - **`AbstractUser` 을 상속받아야 한다.**
+  - default 는` auth` 모듈 내부의 User
+- Django project 는 단 1 개의 사용자 관리 모델만 활성화 가능하다
+- 확장을 위해 커스텀 사용자 관리 모델을 사용할 경우 (`accounts.models.User`) 
+- get_user_model() 함수의 return 대상이 된다.
+
+```python
+# 패키지 참조하는 것과 모양이 다른 것에 주의
+# 이걸 swap 하는 그 순간 부터 기존 코드에 auth.User 를 사용하는게 있다면 다 바꾸어줘야 한다.
+# 기본 UserCreationForm, UserChangeForm 도 custom 해서 model=get_user_model()로 갱신
+# 기존의 UserCreationForm을 쓰면서 is_valid() 를 썼더니 
+# manager is not available 이라는 에러 메시지를 만났다.
+# 왜냐하면 기존의 form 은 auth.User를 참조하기 때문이다.
+
+AUTH_USER_MODEL = 'accounts.User'
+```
+
+
+
+
+
+### 1-2. AbstractUser
 
 - User 의 super class
 
@@ -451,7 +483,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-### 3) 프로젝트의 User 만들기
+### 1-3. 프로젝트의 User 만들기
 
 #### models.py
 
@@ -482,13 +514,13 @@ from django.contrib.auth.decorators import login_required
 
 
 
-## 2 Class UserCreationForm
+## 2. Class UserCreationForm
 
 > 회원 가입 양식
 
 
 
-### 1) UserCreationForm
+### 2-1. UserCreationForm
 
 
 
@@ -496,7 +528,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
-### 2) 프로젝트 회원가입 Form 만들기
+### 2-2. 프로젝트 회원가입 Form 만들기
 
 
 
@@ -504,11 +536,13 @@ from django.contrib.auth.decorators import login_required
 
 
 
-### 1) UserChangeForm
+### 3-1. UserChangeForm
 
 
 
-- User 는 직접 참조하지 않는다.
+##### get_user_model
+
+- **User 는 직접 참조하지 않는다.**
 - `django.contrib.auth.get_user_model`
 - 현재 프로젝트에서 활성화(active) 된 user model을 return
 - 커스텀한 user model 이 있을 경우는 커스텀 user model을 사용하고, 그렇지 않으면 User 참조

@@ -144,6 +144,11 @@ def func(x):  # parameter
 	
 
 func(2)  # argument
+
+
+# 함수 func2는 매개변수로 type이 Class1인 x를 받고
+# type Class2 객체를 반환한다
+def func2(x:Class1) -> Class2
 ```
 
 

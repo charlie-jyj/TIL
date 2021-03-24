@@ -216,5 +216,3 @@ $ git remote add KEY VALUE
 | reset   | commit 취소하기          | $ git reset  [commit id]          |
 
 
-
-![image-20210312161526154](02_git.assets/image-20210312161526154.png)

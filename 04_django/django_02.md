@@ -420,8 +420,8 @@ https://docs.djangoproject.com/en/3.1/ref/contrib/admin/
 
 
 
-## 초기화
+## DB 초기화
 
-- `rm db.sqlite3`
 - `rm app_name/migrations/0*`
-- 
+- rm db.sqlite3`
+- 다시 migration
