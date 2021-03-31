@@ -401,15 +401,23 @@ from django.contrib.auth.decorators import login_required
 
 ## 6) Change Password
 
+### Views
 
+- 변경된 비밀번호를 save 하면 로그아웃 된다.
 
+- 로그아웃을 방지하기 위해서 `update_session_auth_hash` 메서드 사용
 
+- PasswordChangeForm 은 self.user 필드를 가지고 있으므로 `form.user` 와 같이 사용할 수 있다.
+
+  ![image-20210329133759918](django_05.assets/image-20210329133759918.png)
 
 
 
 
 
 ----
+
+
 
 ## 1. class User
 

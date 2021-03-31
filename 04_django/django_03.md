@@ -286,3 +286,27 @@ form = ArticleForm(instance = article)
 ##### postman
 
 - method 를 변경해 django에 요청을 보낼 수 있다.
+
+
+
+## Django humanize
+
+> 1 to one
+>
+> 4500 to 4,500
+>
+> format localization
+>
+> 1000000 to 1.0 million
+>
+> 28 March to Yesterday
+>
+> 2 hours ago
+
+https://docs.djangoproject.com/en/3.1/ref/contrib/humanize/
+
+![image-20210329102707979](django_03.assets/image-20210329102707979.png)
+
+![image-20210329102946749](django_03.assets/image-20210329102946749.png)
+
+![image-20210329103009120](django_03.assets/image-20210329103009120.png)

@@ -7,6 +7,13 @@
 
 
 
+- Git 사용의 목적
+
+1. 버전관리
+2. 협업
+
+
+
 ## 1 git 시작하기
 
 - `init`
@@ -61,7 +68,7 @@
 
 
 
-#### 시간 되돌리기
+#### reset
 
 > reset
 >
@@ -93,9 +100,17 @@
 - 로그를 보면 과거로 돌아갔다
 - git status를 보면 현재까지의 수정사항이 add 전 working directory에 올라가 있다.
 - 여기에서 add를 하면 staging area에 올라갈 것
-- 
 
 
+
+#### revert
+
+- git revert < commit 이름>
+- conflict 상황이 발생
+- 코드를 봤을 때 과거의 코드로 되돌림
+- log 는 다 남아 있다.
+- 기억 조작 (코드 조작)
+- 내용만 과거로 돌아가고 log 에는 revert 한  새 commit 이 쌓이는 것
 
 
 
@@ -131,6 +146,8 @@ branch를 따서 원본에 새로운 기능을 구현하고
 
 ### `Master`
 
+현재 배포되고 있는 프로그램
+
 branch중 기둥이되는 main 가지에서 가장 최신의 commit
 
 branch를 끌어올 때엔 (=변경 사항을 취합) 
@@ -142,6 +159,8 @@ HEAD가 Master로 이동해야 한다.
 ### `Merge`
 
 branch가 걸은 길을 master가 걷는 것 (Fast-forward)
+
+master 로 switch 한 상태에서 진행한다
 
 merge 후에는 branch를 삭제한다 (권장)
 
@@ -163,7 +182,7 @@ master의 내용과 branch의 내용이 충돌할 경우
 
 직접 수정하며 지울 코드와 남길 코드를 결정한다.
 
-
+![image-20210326091643283](02_git.assets/image-20210326091643283.png)
 
 ### `HEAD`
 
@@ -204,6 +223,7 @@ $ git remote add KEY VALUE
 |         | 직전 commit message 수정 | $ git commit --amend              |
 | log     | commit 내역 (id) 보기    | $ git log                         |
 |         | 한 줄로 보기             | $ git log --oneline               |
+|         | 그림표시                 | $git log --graph                  |
 | status  | 전체 상태 확인           | $ git status                      |
 | push    | gitlab으로 업로드        | $ git push origin master          |
 | remote  | origin 변경하기          | $ git remote set-url origin [url] |
@@ -216,3 +236,7 @@ $ git remote add KEY VALUE
 | reset   | commit 취소하기          | $ git reset  [commit id]          |
 
 
+
+### Gitlab Flow
+
+![image-20210326112849204](02_git.assets/image-20210326112849204.png)
