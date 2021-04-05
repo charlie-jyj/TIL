@@ -240,3 +240,18 @@ $ git remote add KEY VALUE
 ### Gitlab Flow
 
 ![image-20210326112849204](02_git.assets/image-20210326112849204.png)
+
+
+
+## 6. 기여하기
+
+### issue
+
+- 마치 자유게시판
+
+### fork
+
+- 내게 권한 없는 프로젝트를 fork 하여 repo를 복제해온다.
+- clone 후 code 수정 한 다음에 push 하면 내 repo에 반영
+- 병합요청 (서로 다른 repo 끼리의 병합을 요청하는 것)
+

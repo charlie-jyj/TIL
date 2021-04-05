@@ -556,3 +556,33 @@ AUTH_USER_MODEL = 'accounts.User'
 - 커스텀한 user model 이 있을 경우는 커스텀 user model을 사용하고, 그렇지 않으면 User 참조
 
 ![image-20210322154806954](django_05.assets/image-20210322154806954.png)
+
+
+
+
+
+## Social Login
+
+
+
+### OAuth
+
+> 인터넷 사용자들이 비밀번호를 제공하지 않고 다른 우베사이트 상의 자신들의 정보에 대해 웹사이트나 애플리 케이션의 접근 권한을 부여할 수 있는 공통적인 수단으로 사용된다.
+
+https://d2.naver.com/helloworld/24942
+
+
+
+### Allauth
+
+https://django-allauth.readthedocs.io/en/latest/installation.html
+
+
+
+### Google
+
+- clientid
+  - 950935977272-moivirth52q1k0pa2191aeeol26i4khg.apps.googleusercontent.com
+- secretkey
+  - W0mc80qBoGFL249s1oSjW-L3
+

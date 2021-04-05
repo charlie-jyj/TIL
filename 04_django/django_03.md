@@ -310,3 +310,17 @@ https://docs.djangoproject.com/en/3.1/ref/contrib/humanize/
 ![image-20210329102946749](django_03.assets/image-20210329102946749.png)
 
 ![image-20210329103009120](django_03.assets/image-20210329103009120.png)
+
+
+
+## Django pagination
+
+https://docs.djangoproject.com/en/3.1/topics/pagination/
+
+![image-20210402114030837](django_03.assets/image-20210402114030837.png)
+
+
+
+### django bootstrap pagination
+
+https://pypi.org/project/django-bootstrap-pagination/
