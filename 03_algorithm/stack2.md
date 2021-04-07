@@ -384,15 +384,16 @@ def power(base, exp):
 
 - 합병정렬과의 차이
   - 합병 정렬은 그냥 두 부분으로 나눈다
-  - 퀵정렬은 분할 할 때 기준 아이템 중심으로 이보다 작은 것은 왼쪽, 큰 것은 오른쪽에 위치시킨다
+  - 퀵정렬은 분할 할 때 기준 아이템 중심으로 이보다 작은 것은 왼쪽, 큰 것은 오른쪽에 위치시킨다 (원본을 수정한다)
+  - 분할하면서 정렬되어 간다.
   - 각 부분 정렬이 끝난 후 합병 정렬은 합병이라는 후처리 작업이 필요하다.
 
 
 
-```
+```python
 def quick_sort(a, begin, end):
 	if begin < end:
-		p = partition(a, begin, end)
+		p = partition(a, begin, end) # pivot 기준으로 좌우로 나누어 분할
 		quick_sort(a, begin, p-1)
 		quick_sort(a, p+1, end)
 ```
