@@ -425,6 +425,20 @@ def ce1(n):
 
 
 
+#### 내장함수
+
+```
+bin(n) // Ob101010 -> [2:] 끊어서 써야한다
+oct(n)  // 0o52
+hex(n) // 0x2a
+int('101010, 2)  // 몇진수인지 알려준다
+format(23,'b')  // 접두어 제거 후 2진수로 변환
+```
+
+https://www.daleseo.com/python-int-bases/
+
+
+
 
 
 ## 실수
