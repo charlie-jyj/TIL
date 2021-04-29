@@ -259,6 +259,11 @@ https://developer.mozilla.org/en-US/docs/Web/API/UIEvent
     - 이벤트가 발생했을 때 할 일, 함수
     - EventListener 의 인터페이스 혹은
     - JS function 객체 (콜백 함수) 여야 한다
+    - 콜백 함수란, 나중에 호출되는 함수를 말한다
+    - 개발자가 함수의 인자로 콜백 함수를 등록하고
+    - 어떤 이벤트가 발생했거나 특정 시점에 도달했을 때 시스템에서 호출하는 함수를 말한다.
+    
+    
 
 ```javascript
 const myBtn = document.querySelector("#my-button")
