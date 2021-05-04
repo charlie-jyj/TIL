@@ -355,7 +355,7 @@ numbers = [4, 3, 2, 1] // 원본변화 없음
 
 
 
-## 7.객체
+/* 7.객체
 
 
 
@@ -368,9 +368,10 @@ python dictionary 와의 차이
 1. key 문자열의 따옴표 생략 가능 (띄어쓰기 없을 때 => 변수명 작명과 같이 lowerCase를 사용하면 해결 될 문제)
 2. value 에 접근하기 위해 [key]  또는 .key 로 접근한다.
 
+*/
 
 
-```javascript
+
 
 const me = {
   name : '정유진',
@@ -419,7 +420,7 @@ var dooly = {
 const dooly = {
   name: '둘리',
   greeting1 : () => console.log('어서오고2'),  // Arrow
-  greeting2 () {  // function 키워드 대체
+  greeting2 () {  // function 키워드 대체, syntactic sugar
     console.log('어서오고3')
   }
 }
@@ -433,7 +434,7 @@ const ssafy = {
 }
 ssafy.regions
 
-// Object Destructuring (비구조화)
+// Object Destructuring (비구조화), syntactic sugar
 // Old
 var userInfo = {
   name:'정유진',
@@ -521,7 +522,7 @@ const arr = [1, 2, 3]
 
 1. forEach
 
-```javascript
+​```javascript
 // forEach()  return 되는 값 없으므로 === 콜백 함수에 return 필요 없다
 // array를 다룰 때 쓴다.
 arr.forEach(function(num){
