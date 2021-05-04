@@ -262,6 +262,28 @@ cube = n => n ** 3
 
 
 
+기본값 할당하기
+
+```javascript
+// Default Arguments
+function myFuncWithoutDefault(a, b) {
+  if (a !== undefined){
+    a = 0
+  }
+
+  if (b !== undefined){
+    b = 0
+  }
+  return a + b
+}
+
+function myFuncWithDefault(a=0, b=0){
+  return a+b
+}
+```
+
+
+
 
 
 ## 6. 배열
@@ -316,7 +338,7 @@ numbers
 // .join()
 const r = numbers.join(',') // '4,3,2,1'
 numbers = [4, 3, 2, 1] // 원본변화 없음
-
+```
 
 
 일반적인 배열과의 차이
@@ -355,10 +377,14 @@ numbers = [4, 3, 2, 1] // 원본변화 없음
 
 
 
-/* 7.객체
+
+
+## 7.객체
 
 
 
+```javascript
+/*
 python 의 dictionary 와 비슷하게 보인다.
 
 JavaScript 는 이를 object 라고 부른다.
@@ -434,6 +460,14 @@ const ssafy = {
 }
 ssafy.regions
 
+
+```
+
+
+
+- object destructuring 은 자주 사용하게 된다.
+
+```javascript
 // Object Destructuring (비구조화), syntactic sugar
 // Old
 var userInfo = {
@@ -464,6 +498,10 @@ function introduce({name, email, phone}){
 
 introduce(userInfo)
 ```
+
+
+
+
 
 
 
@@ -659,5 +697,309 @@ arr.reduce(function(previous, current){
   }
   return previous
 }, [])
+```
+
+
+
+
+
+## 10. Rest Spread Operator
+
+
+
+- rest operator
+  - python 에서 *args 와 비슷하다
+
+```javascript
+// Rest Operator
+
+function withoutRestOpr(a, b, c, d, e){
+  const numbers = [a, b, c, d, e]
+  numbers.map(num => num + 1)
+}
+
+
+// python *args
+function withRestOpr(x, y, ...numbers) {
+  numbers.map(num => num + 1)
+}
+
+```
+
+
+
+
+
+- spread operator
+  - python 에서 *arr 과 비슷하다
+  - 배열 풀어헤치기
+
+```javascript
+/*
+  python
+  a = [1, 2, 3]
+  b = [0, *a]
+
+*/
+// Spread Operator
+
+function withoutSpreadOpr(){
+  const odds = [1, 3, 5, 7]
+  const evens = [2, 4, 6, 8]
+  const nums = odds.concat(evens)
+}
+
+
+function withSpreadOpr(){
+  const odds = [1, 3, 5, 7]
+  const evens = [2, 4, 6, 8]
+  const nums = [...odds, ...evens]
+}
+```
+
+
+
+
+
+## 11. class
+
+
+
+- java 의 클래스 선언과 흡사하다
+  - 생성자
+    - 생성자 안에서 this를 통해 필드를 생성하는 것은 python 과 닮았다.
+    - `constructor` 예약어를 사용한다
+  - 메서드
+    - 접근제한자와 반환형이 없다
+  - 상속
+    - `extends` 예약어를 사용해 부모 클래스를 지정하고
+    - `super()` 로 부모의 생성자를 먼저 구현한다
+  - 객체 생성
+    - `new` 연산자를 사용한다
+
+
+
+```javascript
+class Car {
+  // __init__ ()
+  constructor(options) {
+    this.title = options.title
+  }
+
+  // method
+  drive() {
+    return `${this.title}이 부릉부릉 달린다`
+  }
+}
+
+const options = {title:'붕붕', color: 'blue'}
+const car = new Car(options)
+
+//  상속
+class Mercedes extends Car {
+  constructor(options){
+    super(options)
+    this.color = options.color
+  }
+
+  honk(){
+    return '빵빵'
+  }
+}
+
+const eclass = new Mercedes(options)
+```
+
+
+
+
+
+## 12. this
+
+
+
+- this 는 아래 2가지 경우를 제외하고는 항상 최상위 객체인 window를 뜻한다.
+- 예외의 경우
+  - constructor 함수 내부
+    - 클래스를 통해 생성될 객체를 뜻한다
+  - 메서드
+    - 메서드가 소속된 객체를 뜻한다
+    - object 에서 key : function() 으로 정의된 경우
+    - class 정의 내부의 메서드 정의된 경우
+
+
+
+메서드와 함수의 차이?
+
+메서드는 객체에 종속되어 있는 함수를 말한다 (obj.method)
+
+
+
+```javascript
+function greeting(){
+  console.log(this)
+  return `안녕하세요, 저는 ${this.firstName} 이에요.`
+} 
+
+const yujin = {
+  firstName: '유진',
+  lastName: '정',
+  fullName() {
+    return `${this.lastName}${this.firstName}`
+  },
+  greeting,
+}
+
+yujin.greeting()  // method true => .greeting() o
+greeting() // method false => greeting() x
+
+
+```
+
+
+
+메서드 내부의 함수에는 this가 적용될까? 
+
+```javascript
+
+// .map 의 callback 함수는 메서드가 아니므로 this 는 window 객체를 뜻한다
+
+  const double = {
+  numbers: [1, 2, 3, 4],
+  x: 2,
+  get_double() {
+    const doubled = this.numbers.map(function (num) {
+      console.log(this)
+      return num * this.x
+    })   
+    return doubled
+  }
+}
+
+double.get_double()  
+// .map 의 인자 cb 함수는 메서드가 아니다. 고로 cb 안의 this 는 windows 가 된다.
+```
+
+
+
+- this를 인지시킬 수 있는 방법
+  - bind 함수
+  - arrow function 
+
+```javascript
+// old: function.bind(this)를 사용해서 this가 window 가 아니라 만들어질 객체로 바인딩
+const double = {
+  numbers: [1, 2, 3, 4],
+  x: 2,
+  get_double(){
+    const doubled = this.numbers.map(function(num){
+      return num * this.x
+    }.bind(this))
+    return doubled
+  }
+}
+
+// arrow function 을 쓰면 해결
+const triple = {
+  numbers : [1, 2, 3, 4],
+  x : 3,
+  get_triple() {
+    return this.numbers.map(num => num * this.x)
+  },
+}
+```
+
+
+
+
+
+## 13. callback
+
+
+
+- concurrency model 을 따르므로 callback 함수의 실행은 특정 조건이 충족될 때 까지 지연될 수 있다.
+  - 시간
+  - request >> response 를 받기
+
+```javascript
+function getTodos(){
+  let data = null
+
+  setTimeout(function() {
+    data = [
+      {id:1, content:'a'},
+      {id:2, content:'b'},
+    ]
+    console.log(data)
+  }, 2000)
+
+  return data // null 반환 된다
+}
+```
+
+
+
+- 함수도 결국엔 값이라는 것을 이해하기
+
+```javascript
+function make101(){
+  return (x) => 100+x
+}
+
+// make101()(1)
+
+const a = make101()
+a(1)
+```
+
+
+
+- array helper method 구현하기
+
+```javascript
+/* map */
+// arr.map(()=>{})
+// map(arr, () => {})
+
+// 일반적으로는 함수 정의 이후에 실행하지만
+// 밑의 코드는 cb 가 아직 정의되지 않은 함수여도 실행한다.
+// 매개변수로 전달될 것이 함수라는 믿음
+// main method를 먼저 구현해두고 추후에 정의
+// 매개변수와 자리를 미리 정해두었으니 그것을 기반으로 구현해야 한다.
+
+function map(cb, arr){
+  const newArr = []
+
+  for (const elem of arr) {
+    newArr.push(cb(elem))
+  }
+
+  return newArr
+}
+
+function plusOne(num){
+  return num+1
+}
+
+
+map((x)=>x+2,[1,2,3,4,5])
+
+
+/*filter*/
+function filter (callback, arr) {
+  //채우세요
+  newArr = []
+
+  for (elem of arr){
+    if (callback(elem))
+    newArr.push(elem)
+  }
+
+  return newArr
+}
+
+filter(function(n){
+  return n % 2
+}, [1, 2, 3, 4, 5])
 ```
 

@@ -145,6 +145,7 @@ print(todo)
 
 - JavaScript 엔진이 아닌 브라우저 영역에서 제공하는 API
   - 당장 해결할 수 없는 작업
+    - 시간, 리퀘스트
   - JS 가 싱글스레드이기 때문에 브라우저의 힘을 빌리는 것
   - JS 엔진이 아니라는 점
 - setTimeout(), DOM events, AJAX 처럼 데이터 가져오는 데에 시간이 걸리는 일
