@@ -352,7 +352,43 @@ https://kr.vuejs.org/v2/api/#propsData
 
 ### 인스턴스 라이프사이클 훅
 
+
+
 ![image-20210506225523139](vue_01.assets/image-20210506225523139.png)
+
+![The Vue Instance Lifecycle](https://vuejs.org/images/lifecycle.png)
+
+#### 1. (before)Created
+
+- 생성 전 
+- 주입 시작
+
+#### 2. (before)Mounted
+
+- DOM 에 부착되기 직전
+- 부착된 후
+  - HTML에 접근하기 원한다면 mounted 이후일 것
+
+#### 3. (before)Updated
+
+- 변화 감지
+- 변화 후 DOM에 반영되어 재구성
+
+#### 4. (before)Destroyed
+
+- destroy 호출
+
+
+
+
+
+
+
+
+
+
+
+
 
 - arrow function 에 대해 주의
 
@@ -397,6 +433,8 @@ https://kr.vuejs.org/v2/api/#propsData
 ```
 
 
+
+### 속성
 
 #### 1.el
 

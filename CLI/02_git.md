@@ -88,6 +88,7 @@
 - git reset --soft < commit  이름>
 - 로그를 보면 과거로 돌아갔는데
 - git status 를 보면 지금까지의 수정사항이 staging area에 올라가 있다.
+  - add 가 필요하지 않다
 - git log: 팝콘 구매 
 - git status: 팝콘 구매 이후의 미래가 저장되어 있다 (기억은 남아있다)
 - 여기서 commit 하면 달라지는 것 없다
@@ -99,6 +100,7 @@
 - git reset < commit 이름>
 - 로그를 보면 과거로 돌아갔다
 - git status를 보면 현재까지의 수정사항이 add 전 working directory에 올라가 있다.
+  - add 가 필요하다
 - 여기에서 add를 하면 staging area에 올라갈 것
 
 

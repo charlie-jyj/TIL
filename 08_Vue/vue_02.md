@@ -1,3 +1,5 @@
+
+
 # vue 02
 
 vue CLI
@@ -103,9 +105,11 @@ $ vue create <my-first-vue-app:프로젝트이름>
 - package.json
   - 명령어 scripts
   - dependencies 개발환경, 배포환경에서 사용할 모듈
+  - 메타데이터
   - requirements.txt와 유사하다
 - package-lock.json
   - 동일한 종속성 유지하도록 도움
+  - dependency 의 상세 내용
 - NPM 사용시 package.json 과 package-lock.json은 자동갱신된다 
   - 수정하지 않음
   - 
@@ -188,11 +192,16 @@ $ npm run serve
 
 ### App.vue
 
-1. template
-2. script
-3. style
-   1. `scoped` 적용 범위 지정 가능 
-   2. ![image-20210510112013730](vue_02.assets/image-20210510112013730.png)
+- template
+
+![image-20210510111648007](vue_02.assets/image-20210510111648007.png)
+
+- script
+
+- style
+
+1. `scoped` 적용 범위 지정 가능 
+2. ![image-20210510112013730](vue_02.assets/image-20210510112013730.png)
 
 
 
@@ -202,14 +211,15 @@ App.vue 가 최상위 컴포넌트
 
 하위 컴포넌트는 components 안에 
 
-![image-20210510111648007](vue_02.assets/image-20210510111648007.png)
-
 
 
 #### 사용순서
 
 1. 불러와서 (import)
 2. 등록하고 (export)
+   1. export default 객체
+   2. node.js 문법 반영
+   3. 다른 파일에서 현재 파일의 객체를 사용하기 위해서는 현재 파일에서 export 해야 import 하여 다룰 수 있다.
 3. 사용하기 (template)
 
 
@@ -234,6 +244,16 @@ https://vuejs.org/v2/guide/components.html
 
 
 #### template
+
+- 하나의 root HTML 요소를 가진다
+- Single Root Element
+- div를 선언하고 그 안에 코드를 작성하면 된다
+
+
+
+![image-20210511002921562](vue_02.assets/image-20210511002921562.png)
+
+
 
 #### script
 
@@ -278,7 +298,15 @@ https://vuejs.org/v2/guide/components.html
 - prop는 상위 컴포넌트의 정보를 전달하기 위한 사용자 지정 특성
 - 하위 컴포넌트는 props 옵션을 사용하여 수신하는 props를 **명시적으로 선언** 해야 사용 가능
 - 즉 데이터는 props 옵션을 사용하여 하위 컴포넌트로 전달된다
-- 직접 참조는 불가능하다
+  - 부모의 data를 전달하기 위해 `v-bind` 속성을 사용한다
+  - ![image-20210511002731927](vue_02.assets/image-20210511002731927.png)
+- 부모 데이터에 자식이 직접 참조하는 것은 불가능하다
+
+
+
+![image-20210511002546765](vue_02.assets/image-20210511002546765.png)
+
+
 
 
 
@@ -324,6 +352,10 @@ https://vuejs.org/v2/guide/components.html
 - 부모 컴포넌트는 자식 텀포넌트가 사용되는 템플릿에서 `v-on` 을 사용하여 자식 컴포넌트가 보낸 이벤트 청취
 - 사용자 지정 이벤트
 
+![image-20210511004144692](vue_02.assets/image-20210511004144692.png)
+
+
+
 
 
 - 이벤트 이름
@@ -335,10 +367,25 @@ https://vuejs.org/v2/guide/components.html
 
 
 
+
+
+- event와 함께 부모에게 데이터를 전달할 수 있다
+  - event handler를 method 로 작성할 경우 첫 번째 인자로 넘어오는 값이 자식이 부모에게 전송하는 데이터 (payload)
+  - ...args 이므로 여러개를 전달할 수 있고 그 경우 배열로 받는다.
+  - 1개의 데이터만 전달할 경우 아래와 같이 받으면 된다
+
+![image-20210511005210560](vue_02.assets/image-20210511005210560.png)
+
 ![image-20210510143225067](vue_02.assets/image-20210510143225067.png)
 
-- payload
-  - event와 함께 전달할 데이터
+
+
+- input 태그의 값을 넘길 경우 `v-model` 속성을 사용하면 좀더 편리하다
+- v-model 로 연동되어 있는 data를 emit 하며 넘기면 되기 때문
+
+![image-20210511005604235](vue_02.assets/image-20210511005604235.png)
+
+##### 적용 코드
 
 ```vue
 <template>
@@ -408,6 +455,12 @@ $ vue add router
   - single page A 인데 a tag?
   - 여전히 SPA 유지 중 
   - 페이지 전환이 이루어진게 아니라 component가 새롭게 렌더링된 것
+  - index.js 에 등록된 경로- 컴포넌트의 name 을 bind 하여 (`:to`) 접근 할 수 있다.
+    - to 속성에 객체를 넘긴다
+    - "{name:'내가 지정한 이름'}"
+
+![image-20210511010527801](vue_02.assets/image-20210511010527801.png)
+
 - router-view 추가
   - router link에 따라서 어디에 렌더링 할 것인지 결정한다
 - router 폴더 추가
@@ -456,6 +509,15 @@ $ vue add router
 - history
   - 뒤로가기
   - 앞으로가기
+  - 공유를 가능하게 한다
+
+
+
+### 순서
+
+0. 컴포넌트 생성
+1. 컴포넌트 호출
+2. 라우터 등록
 
 
 
@@ -490,6 +552,7 @@ $ vue add router
 - App.vue
   - 최상위 컴포넌트
 - views/
+  - `router-view` 를 통해 보여지는 컴포넌트
   - router(index.js) 에 매핑되는 컴포넌트를 모아두는 폴더
   - App 텀포넌트 내부에 About & Home 컴포넌트 등록
 - components
@@ -500,5 +563,29 @@ $ vue add router
 
 ### dynamic route matching
 
+> 기존에 알던 variable routing 과 유사 하다
+
+
+
 ![image-20210510161926393](vue_02.assets/image-20210510161926393.png)
 
+
+
+- `$route.params.var-name`
+
+
+
+### Redirect
+
+- `this.$router.push({name: 'routename'})`
+
+
+
+```javascript
+this.$router.push('/')
+this.$router.push({name: 'Home'})
+```
+
+https://michaelnthiessen.com/redirect-in-vue/
+
+![image-20210511113438399](vue_02.assets/image-20210511113438399.png)
