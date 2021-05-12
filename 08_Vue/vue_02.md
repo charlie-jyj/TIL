@@ -152,7 +152,7 @@ $ npm run serve
 
 #### Module
 
-- 파일 하냐 (스크립트 하나 === 모듈 하나)
+- 파일 하나 (스크립트 하나 === 모듈 하나)
 - 배경
   - 브라우저만 조작할 수 있었던 시기의 자바스크립트는 모듈 관련 문법 없이 사용
   - 하지만 자바스크립트와 애플리케이션이 복잡해지고 크기가 커지자 전역 스코프를 공유하는 형태의 기존 개발 방식의 한계점
@@ -324,6 +324,12 @@ https://vuejs.org/v2/guide/components.html
 ![image-20210510141422225](vue_02.assets/image-20210510141422225.png)
 
 ![image-20210510141326802](vue_02.assets/image-20210510141326802.png)
+
+
+
+#### type check
+
+![image-20210511143621278](vue_02.assets/image-20210511143621278.png)
 
 
 
@@ -577,6 +583,8 @@ $ vue add router
 
 ### Redirect
 
+> programmatic navigation
+
 - `this.$router.push({name: 'routename'})`
 
 
@@ -586,6 +594,9 @@ this.$router.push('/')
 this.$router.push({name: 'Home'})
 ```
 
-https://michaelnthiessen.com/redirect-in-vue/
+https://router.vuejs.org/guide/essentials/navigation.html
 
-![image-20210511113438399](vue_02.assets/image-20210511113438399.png)
+
+
+![image-20210511123126294](vue_02.assets/image-20210511123126294.png)
+

@@ -501,6 +501,25 @@ introduce(userInfo)
 
 
 
+- spread syntax
+
+```javascript
+const todoItem = {
+  todo: '첫 번째 할 일',
+  dueDate: '2020-12-25',
+  importance: 'high',
+  completed: false
+}
+
+// completed 값만 변경한다고 가정
+const myUpdateTodo2 = {
+  ...todoItem, // 기존의 todoItem 을 풀어헤치고
+  completed: true // key 값이 같아 덮어씌운다
+}
+
+console.log(myUpdateTodo2)
+```
+
 
 
 
@@ -705,6 +724,8 @@ arr.reduce(function(previous, current){
 
 ## 10. Rest Spread Operator
 
+> 복사하려는데 다 받아적기 피곤할 때
+
 
 
 - rest operator
@@ -756,6 +777,14 @@ function withSpreadOpr(){
   const nums = [...odds, ...evens]
 }
 ```
+
+
+
+![image-20210512143814304](JavaScript_02.assets/image-20210512143814304.png)
+
+![image-20210512143852188](JavaScript_02.assets/image-20210512143852188.png)
+
+![image-20210512144114013](JavaScript_02.assets/image-20210512144114013.png)
 
 
 
