@@ -338,6 +338,9 @@ numbers
 // .join()
 const r = numbers.join(',') // '4,3,2,1'
 numbers = [4, 3, 2, 1] // 원본변화 없음
+
+// .splice()
+numbers.splice(idx, length)  // idx를 start로 length 만큼 삭제한다, 값 주입도 가능
 ```
 
 

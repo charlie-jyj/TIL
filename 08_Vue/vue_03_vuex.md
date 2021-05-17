@@ -243,6 +243,12 @@ export default {
 - complete 의 boolean 값에 따라서 class 추가 여부를 결정
 - `:class` 에 객체를 할당한다.
 
+
+
+##### class style binding
+
+https://vuejs.org/v2/guide/class-and-style.html
+
 ![image-20210512150849749](vue_03.assets/image-20210512150849749.png)
 
 
@@ -369,15 +375,13 @@ UPDATE_TODO(state, todoItem) {
 
 
 
-
-
-
+##### array.splice()
 
 ![image-20210512141852548](vue_03.assets/image-20210512141852548.png)
 
 
 
-### binding helper
+### component binding helper
 
 https://vuex.vuejs.org/api/#component-binding-helpers
 
@@ -454,6 +458,8 @@ export default {
 - computed와 Actions 매핑
 - TodoLisItem 에서 actions 를 호출하는 경우
 - 그런데 payload 값을 어찌 넘길 것?
+  - v-on 의 경우 메서드 이름을 받을 뿐 아니라
+  - 인라인으로 메서드를 넣을 수 있는데
   - 호출할 때에 매개변수를 함께 넘겨야 한다.
 
 
@@ -494,11 +500,31 @@ export default {
 
 
 
+##### event handler 와 매개변수
+
+https://vuejs.org/v2/guide/events.html
+
+![image-20210513101313639](vue_03.assets/image-20210513101313639.png)
+
+
+
+#####  v-on = eventHandler의 매개변수로 이벤트도 함께 넘길 수 있다
+
+![image-20210513101548601](vue_03.assets/image-20210513101548601.png)
+
+
+
+#### mapMutations
+
+
+
+
+
 ### persistedstate plug-in
 
 >  local storage 빌려 state 저장하기
 
-
+https://www.npmjs.com/package/vuex-persistedstate
 
 ```
 npm install --save vuex-persistedstate
@@ -512,9 +538,9 @@ import createPersistedState from "vuex-persistedstate";
 
 #### usage
 
-- store에
+- store에 plugins 로 등록해야 사용할 수 있다.
 
-```
+```javascript
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 

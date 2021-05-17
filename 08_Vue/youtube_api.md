@@ -7,10 +7,13 @@ https://www.notion.so/Youtube-API-key-031e096d383b4350a361527ee8420e84
 - API key
 
 ```
-AIzaSyCL4MW47NluIqx8OM2RDB-HJglVoWZch4w
+AIzaSyAxMFWcJQCAB3X1zHYLMJ5nHcvup8z561g
 ```
 
 
+
+- API Guide
+- https://developers.google.com/youtube/v3/guides/implementation/search
 
 ## app
 
