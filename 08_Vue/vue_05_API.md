@@ -372,6 +372,35 @@ export default {
 
 
 
+#### router link < a tag > native
+
+- click event 의 native 한 속성을 회복한다
+- native 없이는 해당 component 에서 click 이라는 custom event가 emit 되기를 기다리는 것
+  - component 이기 때문에
+
+```vue
+<template>
+  <div id="app">
+    <div id="nav">
+      <span v-if="isLogin">
+        <router-link :to="{ name: 'TodoList' }">Todo List</router-link> | 
+        <router-link :to="{ name: 'CreateTodo' }">Create Todo</router-link> |
+        <router-link @click.native="logout" to="#">Logout</router-link>  <!--고유한 event를 사용하기 위해 .native-->
+      </span>
+      <span v-else>
+        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
+        <router-link :to="{ name: 'Login' }">Login</router-link> 
+      </span>
+    </div>
+    <router-view @login="changeIsLogin"/>
+  </div>
+</template>
+```
+
+
+
+![image-20210518162653774](vue_05_API.assets/image-20210518162653774.png)
+
 
 
 ### djagno model 수정
